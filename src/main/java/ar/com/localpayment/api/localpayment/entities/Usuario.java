@@ -2,10 +2,12 @@ package ar.com.localpayment.api.localpayment.entities;
 
 import javax.persistence.*;
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.*;
 
+@Entity
 @Table (name = "usuario")
 public class Usuario {
 

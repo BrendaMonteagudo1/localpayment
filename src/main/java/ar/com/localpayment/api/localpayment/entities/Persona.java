@@ -3,11 +3,12 @@ import java.util.*;
 
 import javax.persistence.*;
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.*;
 
-
+@Entity
 @Table(name = "persona")
 public class Persona {
     
@@ -41,7 +42,6 @@ public class Persona {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-
 
 
     public String getDireccion() {

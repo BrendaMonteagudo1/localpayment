@@ -3,9 +3,11 @@ package ar.com.localpayment.api.localpayment.entities;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 import org.hibernate.annotations.*;
 
+@Entity
 @Table (name = "tarjeta")
 public class Tarjeta {
     @Id
