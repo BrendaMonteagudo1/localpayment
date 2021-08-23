@@ -8,4 +8,6 @@ import ar.com.localpayment.api.localpayment.entities.Tarjeta;
 @Repository
 public interface TarjetaRepository extends JpaRepository<Tarjeta, Integer>{
     
+    Tarjeta findByTarjetaId(Integer id);
+  
 }
