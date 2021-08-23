@@ -15,7 +15,7 @@ public class PersonaController {
     @Autowired
     private PersonaService service;
 
-    @PostMapping("api/pasajes")
+    @PostMapping("api/personas")
     public ResponseEntity<GenericResponse> crearPersona(Persona persona) {
 
         GenericResponse respuesta = new GenericResponse();
@@ -28,5 +28,6 @@ public class PersonaController {
 
         return ResponseEntity.ok(respuesta);
     }
+
 
 }
