@@ -15,7 +15,7 @@ public void crearTarjeta(Tarjeta tarjeta) {
     repo.save(tarjeta);
 }
 
-public Tarjeta buscarPorId(Integer id) {
+public Tarjeta buscarPorId(Integer id) { //  a) Invocar un método que devuelva toda la información de una tarjeta
     return repo.findByTarjetaId(id);
 }
     
