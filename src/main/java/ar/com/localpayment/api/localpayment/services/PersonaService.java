@@ -1,5 +1,7 @@
 package ar.com.localpayment.api.localpayment.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,16 @@ public class PersonaService {
         repo.save(persona);
     }
 
-    // solo genero crear porque el findById seria para usuario (?)
+    public Persona buscarPersona(Integer Id) {
+        Optional<Persona> resultado = repo.findById(Id);
 
+        if(resultado.isPresent())
+            return resultado.get();
+        
+        
+        return null;
+        
+    }
+
+    
 }

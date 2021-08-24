@@ -2,6 +2,8 @@ package ar.com.localpayment.api.localpayment.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,5 +31,11 @@ public class PersonaController {
         return ResponseEntity.ok(respuesta);
     }
 
+    @GetMapping("api/personas/{id}")
+    public ResponseEntity<Persona> getPersonasPorId(@PathVariable Integer id){
+        Persona persona = service.buscarPersona(id);
+
+        return ResponseEntity.ok(persona);
+    }
 
 }
