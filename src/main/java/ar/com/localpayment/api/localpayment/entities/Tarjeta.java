@@ -93,6 +93,15 @@ public class Tarjeta {
     }
 
 
+    public enum MarcaTarjetaEnum {
+        SQUA(1), SCO(2), PERE(3);
+
+        private final Integer value;
+
+        private MarcaTarjetaEnum(Integer value) {
+            this.value = value;
+        }
+    }
 
 
 
