@@ -101,6 +101,20 @@ public class Tarjeta {
         private MarcaTarjetaEnum(Integer value) {
             this.value = value;
         }
+        public Integer getValue() {
+            return value;
+        }
+
+        public static MarcaTarjetaEnum parse(Integer id) {
+            MarcaTarjetaEnum status = null; // Default
+            for (MarcaTarjetaEnum item : MarcaTarjetaEnum.values()) {
+                if (item.getValue().equals(id)) {
+                    status = item;
+                    break;
+                }
+            }
+            return status;
+        }
     }
 
 
