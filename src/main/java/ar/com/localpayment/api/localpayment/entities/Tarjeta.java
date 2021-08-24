@@ -1,5 +1,6 @@
 package ar.com.localpayment.api.localpayment.entities;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -32,7 +33,7 @@ public class Tarjeta {
 
     private Integer limite;
 
-    private Integer tasa;
+    private BigDecimal tasa;
     
     
 
@@ -44,11 +45,11 @@ public class Tarjeta {
         this.limite = limite;
     }
 
-    public Integer getTasa() {
+    public BigDecimal getTasa() {
         return tasa;
     }
 
-    public void setTasa(Integer tasa) {
+    public void setTasa(BigDecimal tasa) {
         this.tasa = tasa;
     }
 

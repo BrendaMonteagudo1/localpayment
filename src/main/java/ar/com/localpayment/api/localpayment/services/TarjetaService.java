@@ -1,5 +1,6 @@
 package ar.com.localpayment.api.localpayment.services;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
@@ -7,7 +8,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.com.localpayment.api.localpayment.entities.Persona;
 import ar.com.localpayment.api.localpayment.entities.Tarjeta;
+import ar.com.localpayment.api.localpayment.entities.Tarjeta.MarcaTarjetaEnum;
 import ar.com.localpayment.api.localpayment.repos.TarjetaRepository;
 
 
@@ -50,5 +53,16 @@ public class TarjetaService {
     public List<Tarjeta> traerTarjetas() {
         return repo.findAll();
     }
-    
+    // pasar a entity/service operacion
+    public BigDecimal calcularTasaPorServicio (BigDecimal tasaTarjeta) {
+        
+        Persona tarjetaPersona = new Persona();
+      
+        if (tarjetaPersona.getTarjetaId() == MarcaTarjetaEnum.PERE) {
+
+        }
+
+        return tasaTarjeta;
+    }
+
 }
