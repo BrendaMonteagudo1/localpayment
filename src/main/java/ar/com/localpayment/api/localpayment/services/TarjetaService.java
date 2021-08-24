@@ -54,11 +54,11 @@ public class TarjetaService {
         return repo.findAll();
     }
     // pasar a entity/service operacion
-    public BigDecimal calcularTasaPorServicio (BigDecimal tasaTarjeta) {
+    public BigDecimal calcularTasaPorServicio (BigDecimal tasaTarjeta, Persona personaTarjeta) {
         
-        Persona tarjetaPersona = new Persona();
+        //Persona tarjetaPersona = new Persona();
       
-        if (tarjetaPersona.getTarjetaId() == MarcaTarjetaEnum.PERE) {
+        if (Persona.getTarjetaId() == MarcaTarjetaEnum.PERE) {
 
         }
 
