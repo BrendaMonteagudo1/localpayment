@@ -1,5 +1,7 @@
 package ar.com.localpayment.api.localpayment.services;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,4 +21,18 @@ public Tarjeta buscarPorId(Integer id) { //  a) Invocar un método que devuelva 
     return repo.findByTarjetaId(id);
 }
     
+//Una tarjeta es válida para operar si su fecha de vencimiento es mayor al presente día
+
+
+public boolean validarTarjetaPorVencimiento(Tarjeta tarjeta) {
+    
+    Calendar c = Calendar.getInstance();
+   // c.setTime(tarjeta.getFecha());
+    c.add(Calendar.DATE, 1);
+
+  
+   // if (tarjeta.getFechaVencimiento().after(Calendar.getInstance(){
+        return true;
+    }
+}
 }
