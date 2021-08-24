@@ -8,11 +8,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 import ar.com.localpayment.api.localpayment.entities.Usuario;
 import ar.com.localpayment.api.localpayment.repos.UsuarioRepository;
 import ar.com.localpayment.api.localpayment.security.Crypto;
 
+@Service
 public class UsuarioService {
 
   @Autowired
@@ -73,7 +75,10 @@ public class UsuarioService {
 
     Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 
-     return authorities;
+    //TipoUsuarioEnum userType = usuario.getTipoUsuario();
+
+   
+    return authorities;
   }
 
 }

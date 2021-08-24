@@ -1,4 +1,5 @@
 package ar.com.localpayment.api.localpayment.entities;
+
 import java.util.*;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ import ar.com.localpayment.api.localpayment.entities.Tarjeta.MarcaTarjetaEnum;
 @Entity
 @Table(name = "persona")
 public class Persona {
-    
+
     @Id
     @Column(name = "persona_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,22 +23,25 @@ public class Persona {
     private String nombre;
 
     private String apellido;
- 
-    @NaturalId    
+
+    @NaturalId
     private Integer dni;
 
     private String direccion;
-    
+
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
 
-    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "personaId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Tarjeta> tarjetas = new ArrayList<>();
 
-    private Integer tarjetaId; 
+    @OneToOne(mappedBy = "personaId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Usuario usuarioId;
 
-   public MarcaTarjetaEnum getTarjetaId() {
+    private Integer tarjetaId;
+
+    public MarcaTarjetaEnum getTarjetaId() {
         return MarcaTarjetaEnum.parse(this.tarjetaId);
     }
 
@@ -45,14 +49,13 @@ public class Persona {
         this.tarjetaId = tarjetaId.getValue();
     }
 
-   public Date getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-
 
     public String getDireccion() {
         return direccion;
@@ -73,7 +76,6 @@ public class Persona {
     public void agregarTarjeta(Tarjeta tarjeta) {
         this.tarjetas.add(tarjeta);
     }
-
 
     public Integer getPersonaId() {
         return personaId;
@@ -106,6 +108,24 @@ public class Persona {
     public void setDni(Integer dni) {
         this.dni = dni;
     }
+
+    public void setTarjetas(List<Tarjeta> tarjetas) {
+        this.tarjetas = tarjetas;
+    }
+
+    public Usuario getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Usuario usuarioId) {
+        this.usuarioId = usuarioId;
+        this.usuarioId.setPersonaId(this);
+    
+    }
+
+    public void setTarjetaId(Integer tarjetaId) {
+        this.tarjetaId = tarjetaId;
+    }
+
+    
 }
-
-

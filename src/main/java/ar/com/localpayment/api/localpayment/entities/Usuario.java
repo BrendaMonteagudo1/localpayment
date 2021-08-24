@@ -24,8 +24,10 @@ public class Usuario {
     @NaturalId
     private String email;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Integer personaId;
+    @OneToOne
+    @JoinColumn(name = "persona_id", referencedColumnName = "persona_id")
+   // @Column(name = "persona_id")
+    private Persona personaId;
 
 
     public Integer getUsuarioId() {
@@ -61,13 +63,15 @@ public class Usuario {
     }
 
     
-    public Integer getPersonaId() {
+    public Persona getPersonaId() {
         return personaId;
     }
 
-    public void setPersonaId(Integer personaId) {
+    public void setPersonaId(Persona personaId) {
         this.personaId = personaId;
+       // this.personaId.setUsuarioId(this);
     }
 
+   
 
 }
