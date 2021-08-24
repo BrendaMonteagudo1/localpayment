@@ -23,7 +23,8 @@ public class Tarjeta {
     @JoinColumn(name = "persona_id", referencedColumnName = "persona_id")
     private Persona personaId;
 
-    private String marca;
+    @Column(name = "marca_tarjeta_id")
+    private String marcaTarjetaId;
 
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
@@ -77,11 +78,11 @@ public class Tarjeta {
     }
 
     public String getMarca() {
-        return marca;
+        return marcaTarjetaId;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setMarca(String marcaTarjetaId) {
+        this.marcaTarjetaId = marcaTarjetaId;
     }
 
     public Date getFechaVencimiento() {
