@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.*;
 
+import ar.com.localpayment.api.localpayment.entities.Tarjeta.MarcaTarjetaEnum;
+
 @Entity
 @Table(name = "persona")
 public class Persona {
@@ -33,7 +35,15 @@ public class Persona {
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Tarjeta> tarjetas = new ArrayList<>();
 
-    private Integer tarjetaId;
+    private Integer tarjetaId; 
+
+   public MarcaTarjetaEnum getTarjetaId() {
+        return MarcaTarjetaEnum.parse(this.tarjetaId);
+    }
+
+    public void setTarjetaId(MarcaTarjetaEnum tarjetaId) {
+        this.tarjetaId = tarjetaId.getValue();
+    }
 
    public Date getFechaNacimiento() {
         return fechaNacimiento;
