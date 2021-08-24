@@ -13,7 +13,6 @@ import ar.com.localpayment.api.localpayment.entities.Tarjeta;
 import ar.com.localpayment.api.localpayment.entities.Tarjeta.MarcaTarjetaEnum;
 import ar.com.localpayment.api.localpayment.repos.TarjetaRepository;
 
-
 @Service
 public class TarjetaService {
     @Autowired
@@ -40,29 +39,42 @@ public class TarjetaService {
         return true;
     }
 
-    public Tarjeta buscarTarjeta(Integer tarjetaId){
-     Optional<Tarjeta> resultado = repo.findById(tarjetaId);
+    public Tarjeta buscarTarjeta(Integer tarjetaId) {
+        Optional<Tarjeta> resultado = repo.findById(tarjetaId);
 
-     if(resultado.isPresent())
-        return resultado.get();
-    
-     return null;
+        if (resultado.isPresent())
+            return resultado.get();
+
+        return null;
     }
-
 
     public List<Tarjeta> traerTarjetas() {
         return repo.findAll();
     }
-    // pasar a entity/service operacion
-    public BigDecimal calcularTasaPorServicio (BigDecimal tasaTarjeta, Persona personaTarjeta) {
-        
-        //Persona tarjetaPersona = new Persona();
-      
-        if (Persona.getTarjetaId() == MarcaTarjetaEnum.PERE) {
 
+    // pasar a entity/service operacion
+    public BigDecimal calcularTasaPorServicio(Tarjeta tarjeta, Persona personaTarjeta) {
+
+        // Persona tarjetaPersona = new Persona();
+        ITarjetaCalculoStrategy calculo = null;
+        switch (tarjeta.getMarca()) {
+            case "PERE":
+                calculo = new TarjetaPERECalculoStrategy();
+
+            case "SCO":
+                calculo = new TarjetaSCOCalculoStrategy();
+
+            case "SQUA":
+               calculo = new TarjetaSQUACalculoStrategy();
+
+            default: 
+                break;
         }
 
-        return tasaTarjeta;
+        calculo.init(tarjeta);
+
+        return calculo.calcularTasa();
+
     }
 
 }
