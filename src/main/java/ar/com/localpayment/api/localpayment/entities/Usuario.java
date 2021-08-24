@@ -69,7 +69,7 @@ public class Usuario {
 
     public void setPersonaId(Persona personaId) {
         this.personaId = personaId;
-       // this.personaId.setUsuarioId(this);
+        this.personaId.setUsuarioId(this);
     }
 
    

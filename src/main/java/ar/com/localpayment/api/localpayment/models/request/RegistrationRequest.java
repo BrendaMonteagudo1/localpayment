@@ -3,9 +3,10 @@ import java.util.Date;
 
 public class RegistrationRequest {
 
-    public String fullName; // Nombre persona
-    public int country; // pais del usuario
+    public String name; // Nombre persona
+    public String lastname;
     public String identification; // nro documento
+    public String address;
     public Date birthDate; // fechaNacimiento
     public String email; // email
     public String password; // contraseña elegida por el usuario.

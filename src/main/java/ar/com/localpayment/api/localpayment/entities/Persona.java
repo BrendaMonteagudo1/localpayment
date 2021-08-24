@@ -25,7 +25,7 @@ public class Persona {
     private String apellido;
 
     @NaturalId
-    private Integer dni;
+    private String dni;
 
     private String direccion;
 
@@ -101,11 +101,11 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public Integer getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(Integer dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -119,7 +119,7 @@ public class Persona {
 
     public void setUsuarioId(Usuario usuarioId) {
         this.usuarioId = usuarioId;
-        this.usuarioId.setPersonaId(this);
+        //usuarioId.setPersonaId(this);
     
     }
 

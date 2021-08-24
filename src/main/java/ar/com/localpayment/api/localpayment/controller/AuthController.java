@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import ar.com.localpayment.api.localpayment.entities.Usuario;
 import ar.com.localpayment.api.localpayment.models.request.*;
@@ -17,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 
+@RestController
 public class AuthController {
     @Autowired
     UsuarioService usuarioService;
@@ -36,13 +38,11 @@ public class AuthController {
             BindingResult results) {
         RegistrationResponse r = new RegistrationResponse();
 
-        // aca creamos la persona y el usuario a traves del service.
-
-        Usuario usuario = usuarioService.crearUsuario(req.fullName, req.birthDate, req.identification,
-                req.email, req.password);
+    
+        Usuario usuario = usuarioService.crearUsuario(req.name, req.lastname,req.identification, req.address, req.birthDate, req.email, req.password);
 
         r.isOk = true;
-        r.message = "Te registraste con exitoooo!!!!!!!";
+        r.message = "Te registraste con exito!";
         r.userId = usuario.getUsuarioId(); // <-- AQUI ponemos el numerito de id para darle a front!
 
         return ResponseEntity.ok(r);
@@ -58,15 +58,11 @@ public class AuthController {
         UserDetails userDetails = usuarioService.getUserAsUserDetail(usuarioLogueado);
         Map<String, Object> claims = usuarioService.getUserClaims(usuarioLogueado);
 
-        // Genero los roles pero con los Claims(los propositos)
-        // En este caso nuestros claims tienen info del tipo de usuario
-        // y de la entidad que representa
-        // Esta info va a viajar con el token, o sea, cualquiera puede
+       
         // ver esos ids de que user pertenecen si logran interceptar el token
         // Por eso es que en cada request debemos validar el token(firma)
         String token = jwtTokenUtil.generateToken(userDetails, claims);
 
-        // Cambio para que devuelva el full perfil
         Usuario u = usuarioService.buscarPorUsername(authenticationRequest.username);
 
         LoginResponse r = new LoginResponse();

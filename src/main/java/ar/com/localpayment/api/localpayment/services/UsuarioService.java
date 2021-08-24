@@ -13,12 +13,17 @@ import org.springframework.stereotype.Service;
 import ar.com.localpayment.api.localpayment.entities.Usuario;
 import ar.com.localpayment.api.localpayment.repos.UsuarioRepository;
 import ar.com.localpayment.api.localpayment.security.Crypto;
+import ar.com.localpayment.api.localpayment.entities.Persona;
+import ar.com.localpayment.api.localpayment.repos.PersonaRepository;
 
 @Service
 public class UsuarioService {
 
   @Autowired
   UsuarioRepository usuarioRepository;
+  
+  @Autowired
+  PersonaRepository personaRepository;
 
   public Usuario buscarPorUsername(String username) {
     return usuarioRepository.findByUsername(username);
@@ -65,9 +70,26 @@ public class UsuarioService {
     return uDetails;
   }
 
-  public Usuario crearUsuario(String nombre, Date fechaNacimDate, String dni, String email, String password) {
+  public Usuario crearUsuario(String nombre, String apellido, String dni, String direccion, Date fechaNacimiento, String email, String password) {
+    Persona persona = new Persona();
+    persona.setNombre(nombre);
+    persona.setApellido(apellido);
+    persona.setDireccion(direccion);
+    persona.setFechaNacimiento(fechaNacimiento);
+    persona.setDni(dni);
+
     Usuario usuario = new Usuario();
-    return usuarioRepository.save(usuario);
+    usuario.setEmail(email);
+    usuario.setPassword(password);
+    usuario.setUsername(usuario.getEmail());
+
+    
+    usuario.setPersonaId(persona);
+
+    personaRepository.save(persona);
+
+    return usuario;
+
   }
 
    // Usamos el tipo de datos SET solo para usar otro diferente a List private
@@ -75,10 +97,9 @@ public class UsuarioService {
 
     Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 
-    //TipoUsuarioEnum userType = usuario.getTipoUsuario();
-
-   
+  
     return authorities;
   }
+  
 
 }

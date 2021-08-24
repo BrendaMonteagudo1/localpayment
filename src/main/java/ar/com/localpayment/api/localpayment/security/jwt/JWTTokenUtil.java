@@ -82,13 +82,6 @@ public class JWTTokenUtil implements Serializable {
 
     }
 
-    // mientras se crea el token -
-    // 1. Definir claims(propositos) del token, como Issuer(quien lo emite),
-    // Expiration(Expiracion), Subject(usuario/username), and the ID (id usuario)
-    // 2. Firmar el JWT usando el algoritmo HS512 y la clave secreta.
-    // 3. Deacuerdo a Compact
-    // Serialization(https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41#section-3.1)
-    // se compacta el JWT a una un string URL-safe (URL-prudente)
 
     private String doGenerateToken(Map<String, Object> claims, String subject) {
 
