@@ -77,4 +77,43 @@ public class TarjetaService {
 
     }
 
+    public boolean validarMarca(Tarjeta tarjeta) {
+
+        // SI viene algo diferente de 3, que salga.
+        if (tarjeta.getMarca().length() != 4)
+            return false;
+
+        String marca = tarjeta.getMarca();
+
+        // " AP"
+        for (int i = 0; i < marca.length(); i++) {
+            char c = marca.charAt(i);
+
+            if (!(c >= 'A' && c <= 'Z'))
+                return false;
+
+        }
+
+        return true;
+    }
+
+    public Tarjeta ValidarMarca(Tarjeta tarjeta) {
+        
+        return null;
+    }
+
+
+    
+    public boolean validarPrecio(Tarjeta consumo) {
+       
+        if (consumo.getConsumo() == null) {
+            return false;
+        }
+        if (consumo.getConsumo().doubleValue() > 0)
+            return true;
+
+        return false;
+    }
+
 }
+

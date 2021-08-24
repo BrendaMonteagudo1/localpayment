@@ -1,5 +1,5 @@
 package ar.com.localpayment.api.localpayment.services;
-
+import ar.com.localpayment.api.localpayment.services.UsuarioService;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +24,7 @@ public class UsuarioService {
 
   public Usuario login(String username, String password) {
 
-    /**
-     * Metodo IniciarSesion recibe usuario y contraseña validar usuario y contraseña
-     */
-
-    Usuario u = buscarPorUsername(username);
+   Usuario u = buscarPorUsername(username);
 
     if (u == null || !u.getPassword().equals(Crypto.encrypt(password, u.getUsername()))) {
 
