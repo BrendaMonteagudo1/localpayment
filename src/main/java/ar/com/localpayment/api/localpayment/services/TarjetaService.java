@@ -65,9 +65,9 @@ public class TarjetaService {
                 calculo = new TarjetaSCOCalculoStrategy();
 
             case "SQUA":
-               calculo = new TarjetaSQUACalculoStrategy();
+                calculo = new TarjetaSQUACalculoStrategy();
 
-            default: 
+            default:
                 break;
         }
 
@@ -77,10 +77,11 @@ public class TarjetaService {
 
     }
 
-    public boolean validarMarca(Tarjeta tarjeta) {
+  /*  public boolean alidarMarca(Tarjeta tarjeta) {
 
+        // Enum.valueOf(, tarjeta.getMarca())
         // SI viene algo diferente de 3, que salga.
-        if (tarjeta.getMarca().length() != 4)
+        if (tarjeta.getMarca().equals(MarcaTarjetaEnum.valueOf(tarjeta)))
             return false;
 
         String marca = tarjeta.getMarca();
@@ -95,25 +96,28 @@ public class TarjetaService {
         }
 
         return true;
-    }
+    }*/
 
-    public Tarjeta ValidarMarca(Tarjeta tarjeta) {
-        
+
+
+    public MarcaTarjetaEnum validarMarca(String str) {
+        for (MarcaTarjetaEnum me : MarcaTarjetaEnum.values()) {
+            if (me.name().equalsIgnoreCase(str))
+                return me;
+        }
         return null;
     }
-
-
     
+
     public boolean validarPrecio(Tarjeta consumo) {
-       
+
         if (consumo.getConsumo() == null) {
             return false;
         }
-        if (consumo.getConsumo().doubleValue() > 0)
+        if (consumo.getConsumo().doubleValue() < 100)
             return true;
 
         return false;
     }
 
 }
-
