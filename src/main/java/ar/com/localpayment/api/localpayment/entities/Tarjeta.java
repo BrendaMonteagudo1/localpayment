@@ -28,7 +28,28 @@ public class Tarjeta {
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaVencimiento;
+
+    private Integer limite;
+
+    private Integer tasa;
     
+    
+
+    public Integer getLimite() {
+        return limite;
+    }
+
+    public void setLimite(Integer limite) {
+        this.limite = limite;
+    }
+
+    public Integer getTasa() {
+        return tasa;
+    }
+
+    public void setTasa(Integer tasa) {
+        this.tasa = tasa;
+    }
 
     public Integer getTarjetaId() {
         return tarjetaId;
