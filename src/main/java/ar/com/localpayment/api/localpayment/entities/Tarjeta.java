@@ -21,7 +21,7 @@ public class Tarjeta {
 
     @ManyToOne //join columns van donde esta FK
     @JoinColumn(name = "persona_id", referencedColumnName = "persona_id")
-    private Integer personaId;
+    private Persona personaId;
 
     private String marca;
 
@@ -67,11 +67,11 @@ public class Tarjeta {
         this.numTarjeta = numTarjeta;
     }
 
-    public Integer getPersonaId() {
+    public Persona getPersonaId() {
         return personaId;
     }
 
-    public void setPersonaId(Integer personaId) {
+    public void setPersonaId(Persona personaId) {
         this.personaId = personaId;
         this.personaId.agregarTarjeta(this);
     }
