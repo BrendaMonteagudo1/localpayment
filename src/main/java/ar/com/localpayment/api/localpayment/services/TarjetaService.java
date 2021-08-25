@@ -2,6 +2,7 @@ package ar.com.localpayment.api.localpayment.services;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,14 +31,14 @@ public class TarjetaService {
     // presente día
 
     public boolean validarTarjetaPorVencimiento(Tarjeta tarjeta) {
-
+        Date hoy = new Date();
         Calendar c = Calendar.getInstance();
-        // c.setTime(tarjeta.getFecha());
-        c.add(Calendar.DATE, 1);
-
-        // if (tarjeta.getFechaVencimiento().after(Calendar.getInstance(){
+         c.setTime(hoy);
+         c.add(Calendar.MONTH, 1);
+     if (tarjeta.getFechaVencimiento().after(hoy));
         return true;
     }
+
 
     public Tarjeta buscarTarjeta(Integer tarjetaId) {
         Optional<Tarjeta> resultado = repo.findById(tarjetaId);
@@ -76,29 +77,6 @@ public class TarjetaService {
         return calculo.calcularTasa();
 
     }
-
-  /*  public boolean alidarMarca(Tarjeta tarjeta) {
-
-        // Enum.valueOf(, tarjeta.getMarca())
-        // SI viene algo diferente de 3, que salga.
-        if (tarjeta.getMarca().equals(MarcaTarjetaEnum.valueOf(tarjeta)))
-            return false;
-
-        String marca = tarjeta.getMarca();
-
-        // " AP"
-        for (int i = 0; i < marca.length(); i++) {
-            char c = marca.charAt(i);
-
-            if (!(c >= 'A' && c <= 'Z'))
-                return false;
-
-        }
-
-        return true;
-    }*/
-
-
 
     public MarcaTarjetaEnum validarMarca(String str) {
         for (MarcaTarjetaEnum me : MarcaTarjetaEnum.values()) {

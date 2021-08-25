@@ -59,8 +59,14 @@ public class UsuarioService {
   public Map<String, Object> getUserClaims(Usuario usuario) {
     Map<String, Object> claims = new HashMap<>();
 
+    claims.put("userType", usuario.getUsuarioId()); ///
+
+    if (usuario.getPersonaId() != null)
+     claims.put("userType", usuario.getPersonaId());
+   
     return claims;
   }
+  
 
   public UserDetails getUserAsUserDetail(Usuario usuario) {
     UserDetails uDetails;
@@ -80,7 +86,7 @@ public class UsuarioService {
 
     Usuario usuario = new Usuario();
     usuario.setEmail(email);
-    usuario.setPassword(password);
+    usuario.setPassword(Crypto.encrypt(password, email.toLowerCase()));
     usuario.setUsername(usuario.getEmail());
 
     
@@ -96,8 +102,12 @@ public class UsuarioService {
    Set<? extends GrantedAuthority> getAuthorities(Usuario usuario) {
 
     Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+    
+    Integer userType = usuario.getUsuarioId();
 
-  
+    authorities.add(new SimpleGrantedAuthority("CLAIM_userType_" + userType.toString()));
+
+   
     return authorities;
   }
   

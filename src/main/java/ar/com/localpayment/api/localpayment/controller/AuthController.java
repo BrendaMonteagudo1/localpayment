@@ -67,6 +67,7 @@ public class AuthController {
 
         LoginResponse r = new LoginResponse();
         r.id = u.getUsuarioId();
+     // r.userType = u.g();
         r.username = authenticationRequest.username;
         r.email = u.getEmail();
         r.token = token;
