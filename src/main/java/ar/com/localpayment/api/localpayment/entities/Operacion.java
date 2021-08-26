@@ -2,6 +2,8 @@ package ar.com.localpayment.api.localpayment.entities;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 

@@ -27,7 +27,7 @@ public class Tarjeta {
     @Column(name = "marca_tarjeta_id")
     private String marcaTarjetaId;
 
-    @Column(name = "fecha_nacimiento")
+    @Column(name = "fecha_vencimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaVencimiento;
 
