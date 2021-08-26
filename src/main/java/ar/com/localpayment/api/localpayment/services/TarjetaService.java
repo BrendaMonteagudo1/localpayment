@@ -23,12 +23,11 @@ public class TarjetaService {
         repo.save(tarjeta);
     }
 
-    public Tarjeta buscarPorId(Integer id) { // a) Invocar un método que devuelva toda la información de una tarjeta
+    public Tarjeta buscarPorId(Integer id) { 
         return repo.findByTarjetaId(id);
     }
 
-    // Una tarjeta es válida para operar si su fecha de vencimiento es mayor al
-    // presente día
+
 
     public boolean validarTarjetaPorVencimiento(Tarjeta tarjeta) {
         Date hoy = new Date();
