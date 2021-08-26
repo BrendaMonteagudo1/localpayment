@@ -10,4 +10,4 @@ Test Unit: Se generaron dos tets LocalPaymentApplicationTests.java para los mism
 
 Patrón Strategy: Se utlizo para poder generar el metodo calcularTasaPorServicio dentro de TarjetaService.java, ya que por medio de una Interface logramos unir en un  solo metodo las diferentes tasas por el servicio.
 
-Break points: Dentro de la carpeta controller, se encuentran los diferenctes controller (Tarjeta, Persona y Auth) con sus break points y rutas, por los cuales pueden generarse Post y Get de Tarjetas y Personas y tambien generar un Login por medio de auntenticacion JWT. 
+Break points: Dentro de la carpeta controller, se encuentran los diferentes controller (Tarjeta, Persona y Auth) con sus break points y rutas, por los cuales pueden generarse Post y Get de Tarjetas y Personas y tambien generar un Login por medio de auntenticacion JWT. 
